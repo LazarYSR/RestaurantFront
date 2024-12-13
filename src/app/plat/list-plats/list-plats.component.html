@@ -1,0 +1,48 @@
+<div class="max-w-6xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Section pour le bouton "Ajouter un plat" -->
+    <div class="text-center mb-6">
+      <button
+        (click)="onAddSection()"
+        class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+      >
+        Ajouter un plat
+      </button>
+    </div>
+  
+    <div
+    *ngFor="let plat of plats"
+    class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+  >
+    <img [src]="getImagePath(plat.nom)" [alt]="plat.nom" class="w-full h-48 object-cover" />
+    <div class="p-4">
+      <h3 class="text-lg font-bold text-gray-800">{{ plat.nom }}</h3>
+      <p class="text-sm text-gray-600 mt-2">Catégorie : {{ plat.categorie }}</p>
+      <p class="text-sm text-gray-600 mt-1">Prix : {{ plat.prix }} €</p>
+      <p class="text-sm text-gray-600 mt-1">Jours : {{ plat.jours }}</p>
+      <p class="text-sm text-gray-600 mt-1">
+        Temps de préparation : {{ plat.tempspreparation }} min
+      </p>
+      <p
+        class="text-sm text-gray-600 mt-1 overflow-hidden text-ellipsis"
+        [title]="plat.ingredients"
+      >
+        Ingrédients : {{ plat.ingredients }}
+      </p>
+    </div>
+    <div class="p-4 bg-gray-100 flex justify-end">
+      <button
+        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm"
+      >
+        Voir Détails
+      </button>
+    </div>
+  </div>
+  
+  
+    <!-- Section de chargement -->
+    <div *ngIf="loading" class="flex justify-center items-center py-6">
+      <div class="loader"></div> <!-- Ajoutez votre style ou une animation ici -->
+      <p class="text-gray-600">Chargement des employés...</p>
+    </div>
+  </div>
+  

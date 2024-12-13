@@ -1,0 +1,87 @@
+<div class="max-w-3xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+   
+  
+  <form *ngIf="frmPlat" [formGroup]="frmPlat" (ngSubmit)="onUpdate()" class="space-y-6">
+      <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+        Modifier le plat : {{ plat.nom }}
+  
+      </h2>
+      <!-- Nom -->
+      <div>
+        <label for="nom" class="block text-sm font-medium text-gray-700">Nom du plat</label>
+        <input
+          id="nom"
+          formControlName="nom"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+  
+      <!-- Catégorie -->
+      <div>
+        <label for="categorie" class="block text-sm font-medium text-gray-700">Catégorie</label>
+        <input
+          id="categorie"
+          formControlName="categorie"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+  
+      <!-- Prix -->
+      <div>
+        <label for="prix" class="block text-sm font-medium text-gray-700">Prix</label>
+        <input
+          id="prix"
+          formControlName="prix"
+          type="number"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+  
+      <!-- Jours -->
+      <div>
+        <label for="jours" class="block text-sm font-medium text-gray-700">Jours de disponibilité</label>
+        <input
+          id="jours"
+          formControlName="jours"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+  
+      <!-- Ingrédients -->
+      <div>
+        <label for="ingredients" class="block text-sm font-medium text-gray-700">Ingrédients</label>
+        <textarea
+          id="ingredients"
+          formControlName="ingredients"
+          rows="3"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        ></textarea>
+      </div>
+  
+      <!-- Temps de préparation -->
+      <div>
+        <label for="tempspreparation" class="block text-sm font-medium text-gray-700">Temps de préparation (minutes)</label>
+        <input
+          id="tempspreparation"
+          formControlName="tempspreparation"
+          type="number"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+  
+      <!-- Bouton -->
+      <div class="text-center">
+        <button
+          type="submit"
+          class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          [disabled]="frmPlat.invalid"
+        >
+          Mettre à jour
+        </button>
+      </div>
+    </form>
+  </div>
+  

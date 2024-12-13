@@ -1,0 +1,94 @@
+<div class="max-w-3xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+    <!-- Titre du formulaire -->
+    <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">
+      Ajouter un plat
+    </h2>
+  
+    <!-- Formulaire -->
+    <form [formGroup]="frmplat" (ngSubmit)="onAjouter()" class="space-y-6">
+      <!-- Nom du plat -->
+      <div>
+        <label for="nom" class="block text-sm font-medium text-gray-700">Nom du plat</label>
+        <input
+          id="nom"
+          formControlName="nom"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+  
+      <!-- Catégorie -->
+      <div>
+        <label for="categorie" class="block text-sm font-medium text-gray-700">Catégorie</label>
+        <input
+          id="categorie"
+          formControlName="categorie"
+          type="text"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+  
+      <!-- Prix -->
+      <div>
+        <label for="prix" class="block text-sm font-medium text-gray-700">Prix</label>
+        <input
+          id="prix"
+          formControlName="prix"
+          type="number"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          appOnlyPositive
+        />
+      </div>
+  
+      <!-- Jours de disponibilité (Sélection) -->
+      <div>
+        <label for="jours" class="block text-sm font-medium text-gray-700">Jours de disponibilité</label>
+        <select
+          id="jours"
+          formControlName="jours"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        >
+          <option value="Lundi">Lundi</option>
+          <option value="Mardi">Mardi</option>
+          <option value="Mercredi">Mercredi</option>
+          <option value="Jeudi">Jeudi</option>
+          <option value="Vendredi">Vendredi</option>
+          <option value="Samedi">Samedi</option>
+          <option value="Dimanche">Dimanche</option>
+        </select>
+      </div>
+  
+      <!-- Ingrédients -->
+      <div>
+        <label for="ingredients" class="block text-sm font-medium text-gray-700">Ingrédients</label>
+        <textarea
+          id="ingredients"
+          formControlName="ingredients"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          rows="3"
+        ></textarea>
+      </div>
+  
+      <!-- Temps de préparation -->
+      <div>
+        <label for="tempspreparation" class="block text-sm font-medium text-gray-700">Temps de préparation (minutes)</label>
+        <input
+          id="tempspreparation"
+          formControlName="tempspreparation"
+          type="number"
+          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        />
+      </div>
+  
+      <!-- Bouton d'ajout -->
+      <div class="text-center">
+        <button
+          type="submit"
+          class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          [hidden]="frmplat.invalid">
+          Ajouter
+        </button>
+      </div>
+    </form>
+  </div>
+  

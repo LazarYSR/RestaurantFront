@@ -1,0 +1,57 @@
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
+      <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Formulaire Employé</h2>
+      <form [formGroup]="frmEmploye" (ngSubmit)="onAdd()" class="space-y-4">
+        <div>
+          <label for="firstName" class="block text-gray-700 font-medium mb-2">Prénom :</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            formControlName="prenom"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Entrez le prénom"
+          />
+        </div>
+        <div *ngIf="frmEmploye.get('prenom')?.invalid && frmEmploye.get('prenom')?.touched">
+          <small *ngIf="frmEmploye.get('prenom')?.hasError('required')">Le prénom est requis.</small>
+          <small *ngIf="frmEmploye.get('prenom')?.hasError('minlength')">Le prénom doit contenir au moins 5 caractères.</small>
+        </div>
+        <div>
+          <label for="lastName" class="block text-gray-700 font-medium mb-2">Nom :</label>
+          <input
+            type="text"
+            formControlName="nom"
+            id="lastName"
+            name="lastName"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Entrez le nom"
+          />
+        </div>
+        <div *ngIf="frmEmploye.get('nom')?.invalid && frmEmploye.get('nom')?.touched">
+          <small *ngIf="frmEmploye.get('nom')?.hasError('required')">Le nom est requis.</small>
+          <small *ngIf="frmEmploye.get('nom')?.hasError('minlength')">Le nom doit contenir au moins 5 caractères.</small>
+        </div>
+        <div>
+          <label for="role" class="block text-gray-700 font-medium mb-2">Rôle :</label>
+          <select id="role" name="role" formControlName="role" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white">
+            <option value="" disabled selected>Choisissez un rôle</option>
+            <option value="chef">Chef</option>
+            <option value="sous-chef">Sous-Chef</option>
+            <option value="serveur">Serveur</option>
+            <option value="plongeur">Plongeur</option>
+            <option value="hôte">Hôte / Hôtesse</option>
+            <option value="gestionnaire">Gestionnaire</option>
+            <option value="livreur">Livreur</option>
+            <option value="manager">Manager</option>
+          </select>
+        </div>
+        <div *ngIf="frmEmploye.invalid" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <span class="font-medium">Formulaire invalide !</span> Veuillez vérifier les champs.
+        </div>
+        <button type="submit" [hidden]="frmEmploye.invalid" class="w-full bg-blue-500 text-white font-bold py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+          Enregistrer
+        </button>
+      </form>
+    </div>
+  </body>

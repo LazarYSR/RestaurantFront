@@ -1,0 +1,45 @@
+<div class="container mx-auto p-6 bg-gray-100 min-h-screen">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold text-gray-800">Liste des Employés</h1>
+      <button
+        class="bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue-600"
+        (click)="onAdd()">
+        Ajouter un Employé
+      </button>
+    </div>
+  
+    <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+      <thead>
+        <tr class="bg-gray-200 text-gray-600 text-sm uppercase font-medium">
+          <th class="text-left px-6 py-4">Prénom</th>
+          <th class="text-left px-6 py-4">Nom</th>
+          <th class="text-left px-6 py-4">Rôle</th>
+          <th class="text-center px-6 py-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let employe of employeslist">
+            <td>{{ employe.prenom }}</td>
+            <td>{{ employe.nom }}</td>
+            <td>{{ employe.role }}</td>
+            <td class="px-6 py-4 text-center">
+                <button class="bg-yellow-400 text-white font-semibold px-4 py-2 rounded-lg hover:bg-yellow-500 mr-2" (click)="onToEditEmploye(employe.id)">
+                  Modifier
+                </button>
+                <button class="bg-red-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-600" (click)="onToDeleteEmploye(employe.id)">
+                  Supprimer
+                </button>
+              </td>
+        </tr>
+       
+        <tr *ngIf="employeslist.length === 0">
+            <td colspan="4" class="text-center py-6 text-gray-500">Aucun employé trouvé</td>
+          </tr>
+          <div *ngIf="loading" class="flex justify-center items-center py-6">
+            <div class="loader"></div> <!-- Ajoutez votre style ou une animation ici -->
+            <p class="text-gray-600">Chargement des employés...</p>
+          </div>
+          
+      </tbody>
+    </table>
+  </div>
